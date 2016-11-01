@@ -206,12 +206,12 @@ void test_endian(void)
 
 void test_size(void)
 {
-	short a;
-	int b;
-	long c;
-	long long d;
-	tprint("size: short(%lu), int(%lu), long(%lu), long long(%lu)\n", sizeof(a), sizeof(b), sizeof(c), sizeof(d));
-	CHECK_RESULT(sizeof(a) == 2 && sizeof(b) == 4 && sizeof(c) == 8 && sizeof(d) == 8);
+    short a;
+    int b;
+    long c;
+    long long d;
+    tprint("size: short(%lu), int(%lu), long(%lu), long long(%lu)\n", sizeof(a), sizeof(b), sizeof(c), sizeof(d));
+    CHECK_RESULT(sizeof(a) == 2 && sizeof(b) == 4 && sizeof(c) == 8 && sizeof(d) == 8);
 }  
   
 int main()  
