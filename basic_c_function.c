@@ -223,6 +223,6 @@ int main()
     test_str_len();   
     test_mem_copy();  
     test_endian(); 
-	test_size(); 
+    test_size(); 
     return 0;     
 }  
