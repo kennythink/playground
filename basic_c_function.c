@@ -3,6 +3,8 @@
 #include <assert.h>  
 #include <stdlib.h>  
 #include <string.h> // memset   
+
+#define TDEBUG
   
 #define CHECK_RESULT(b) \
 { \
@@ -200,6 +202,16 @@ void test_endian(void)
         tprint("little endian.\n");  
     else  
         tprint("test failed.\n");         
+}
+
+void test_size(void)
+{
+	short a;
+	int b;
+	long c;
+	long long d;
+	tprint("size: short(%lu), int(%lu), long(%lu), long long(%lu)\n", sizeof(a), sizeof(b), sizeof(c), sizeof(d));
+	CHECK_RESULT(sizeof(a) == 2 && sizeof(b) == 4 && sizeof(c) == 8 && sizeof(d) == 8);
 }  
   
 int main()  
@@ -210,6 +222,7 @@ int main()
     test_str_cat();  
     test_str_len();   
     test_mem_copy();  
-    test_endian();  
+    test_endian(); 
+	test_size(); 
     return 0;     
 }  
