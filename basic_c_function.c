@@ -100,13 +100,13 @@ char *str_copy(char *s, char *t)
 /* sample code from `man strncpy` */
 char *str_ncopy(char *s, char *t, size_t n) 
 {
-	assert (s != NULL && t != NULL);
-	size_t i;
-	for (i=0; i<n && s[i] != '\0'; i++) 
-		t[i] = s[i];
-	for (; i<n; i++)
-		t[i] = '\0';
-	return (t);
+    assert (s != NULL && t != NULL);
+    size_t i;
+    for (i=0; i<n && s[i] != '\0'; i++) 
+        t[i] = s[i];
+    for (; i<n; i++)
+        t[i] = '\0';
+    return (t);
 }  
   
 void test_str_copy(void)  
