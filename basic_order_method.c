@@ -33,6 +33,7 @@ typedef struct _node {
 void dump(t_node node);
 bool compare(t_node s, t_node t);
 t_node *bubble_sort(t_node *n, bool req_asc);
+t_node *select_sort(t_node *n, bool req_asc);
 
 
 int main() 
@@ -51,6 +52,9 @@ int main()
 
     bubble_sort(bubble_sort(&node, false), true);
     CHECK_RESULT(compare(refnode, node), "bubble_sort"); 
+    
+    select_sort(select_sort(&node, false), true);
+    CHECK_RESULT(compare(refnode, node), "select_sort"); 
 
     return 0; 
 }
@@ -83,6 +87,35 @@ t_node *bubble_sort(t_node *n, bool req_asc)
     return (n);
 }
 
+/*
+ * ref to: https://en.wikipedia.org/wiki/Selection_sort
+ * req_asc, if true, sort result would from low to high, otherwise high to low.
+*/
+t_node *select_sort(t_node *n, bool req_asc) 
+{
+    int i, j, k, tmp;
+    for (i=0; i<n->len-1; i++) 
+    {
+        k = i;
+        tmp = n->data[i];
+        for (j=i+1; j<n->len; j++)
+        {
+            if ((!req_asc && n->data[j] > tmp) ||
+                 (req_asc && n->data[j] < tmp)) {
+                tmp = n->data[j];
+                k = j; 
+            }
+        }
+        if (k != i) 
+        {
+            n->data[k] = n->data[i];
+            n->data[i] = tmp;
+        }
+    }
+    
+    dump(*n);    
+    return (n);
+}
 
 void dump(t_node node)  
 { 
